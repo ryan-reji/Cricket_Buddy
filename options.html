@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cricket Buddy settings</title>
+<style>
+  body { font: 15px/1.5 "Segoe UI", system-ui, sans-serif; max-width: 520px; margin: 40px auto; padding: 0 20px; color: #1c2230; }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  p.sub { color: #566; margin-top: 0; }
+  label { display: block; margin-top: 18px; font-weight: 600; }
+  input[type=password], input[type=text], input[type=number], select { width: 100%; padding: 8px 10px; margin-top: 6px; border: 1px solid #b9c0cc; border-radius: 8px; font: inherit; }
+  input[type=range] { width: 100%; margin-top: 8px; }
+  small { color: #667; font-weight: 400; display: block; margin-top: 4px; }
+  button { margin-top: 24px; background: #c0352f; color: #fff; border: 0; border-radius: 8px; padding: 9px 18px; font: inherit; font-weight: 600; cursor: pointer; }
+  #saved { margin-left: 12px; color: #2a7a3b; }
+</style>
+</head>
+<body>
+  <h1>Cricket Buddy settings</h1>
+  <p class="sub">Stored only in this browser.</p>
+
+  <label for="provider">AI provider
+    <select id="provider"><option value="gemini">Gemini (free tier)</option><option value="claude">Claude</option></select>
+  </label>
+
+  <div id="gemini">
+    <label for="geminiKey">Gemini API key
+      <input id="geminiKey" type="password" placeholder="AIza..." autocomplete="off">
+      <small>Free key from aistudio.google.com (Get API key). The free tier has rate limits, which is fine for a demo.</small>
+    </label>
+    <label for="geminiModel">Gemini model
+      <input id="geminiModel" type="text">
+      <small>Not sure which name to use? Press the button below and pick one from the list.</small>
+    </label>
+    <button type="button" id="test" style="margin-top:10px;background:#2c3e66">Test key &amp; list models</button>
+    <div id="models" style="margin-top:10px;font-size:13px"></div>
+  </div>
+
+  <div id="claude">
+    <label for="claudeKey">Claude API key
+      <input id="claudeKey" type="password" placeholder="sk-ant-..." autocomplete="off">
+    </label>
+    <label for="claudeModel">Claude model
+      <input id="claudeModel" type="text">
+    </label>
+  </div>
+
+  <label for="opacity">Panel opacity: <span id="opv"></span>
+    <input id="opacity" type="range" min="0.3" max="1" step="0.05">
+  </label>
+
+  <label for="delay">Stream delay (seconds)
+    <input id="delay" type="number" min="0" max="120">
+    <small>How far your stream runs behind live. Used by the live feed in Phase 2 to avoid spoilers.</small>
+  </label>
+
+  <button id="save">Save</button><span id="saved"></span>
+  <script src="options.js"></script>
+</body>
+</html>
